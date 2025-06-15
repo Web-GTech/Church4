@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 262 83% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 262 83% 58%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 262 83% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 262 83% 58%;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased; /* Improve font rendering */
+  -moz-osx-font-smoothing: grayscale; /* Improve font rendering */
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Fix for flex child not shrinking in some browsers */
+}
+
+
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box; 
+}
+
+
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #764ba2 100%); 
+}
+
+.dark .gradient-bg {
+   background: linear-gradient(135deg, hsl(var(--primary)) 0%, #4e316e 100%); 
+}
+
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: hsla(var(--background), 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(var(--border), 0.2);
+}
+
+.dark .glass-effect {
+  background: hsla(var(--background), 0.2); 
+  border: 1px solid hsla(var(--border), 0.1); 
+}
+
+.animate-cascade {
+  animation: cascade 0.6s ease-out forwards;
+}
+
+@keyframes cascade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.church-pattern {
+  background-image: radial-gradient(circle at 1px 1px, hsla(var(--foreground),0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.dark .church-pattern {
+  background-image: radial-gradient(circle at 1px 1px, hsla(var(--foreground),0.05) 1px, transparent 0);
+}
+
+/* Estilos para sidebar moderna */
+.admin-sidebar {
+  transition: width 0.3s ease-in-out;
+}
+
+.admin-sidebar-item {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.admin-sidebar-item.active {
+  background-color: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  border-left: 3px solid hsl(var(--primary));
+  font-weight: 600;
+}
+
+.admin-sidebar-item:hover:not(.active) {
+  background-color: hsl(var(--muted));
+}
+
+.admin-sidebar-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.admin-sidebar-item:hover .admin-sidebar-icon {
+  transform: scale(1.1);
+}
+
+/* Print specific styles */
+@media print {
+  body, #root, .container {
+    overflow: visible !important; /* Allow content to flow for printing */
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+  .print\:p-0 { padding: 0 !important; }
+  .print\:bg-white { background-color: white !important; }
+  .print\:shadow-none { box-shadow: none !important; }
+  .print\:border-b { border-bottom-width: 1px !important; }
+  .print\:rounded-none { border-radius: 0 !important; }
+  .print\:mb-4 { margin-bottom: 1rem !important; }
+  .print\:space-y-2 > * + * { margin-top: 0.5rem !important; }
+  .print\:p-2 { padding: 0.5rem !important; }
+  .print\:text-xs { font-size: 0.75rem !important; line-height: 1rem !important;}
+  .print\:text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important;}
+}
+
+/* Ensure content does not cause horizontal scroll */
+main, .container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure full height for chat and other full-screen-like pages */
+.full-height-page {
+  height: calc(100vh - 4rem); /* Adjust 4rem based on your header height */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .full-height-page {
+    height: calc(100vh - 4rem); /* Header height on desktop */
+  }
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure chat container takes full height of its parent */
+}
+
+.chat-sidebar {
+  /* Styles for chat sidebar */
+  flex-shrink: 0;
+}
+
+.chat-main {
+  /* Styles for main chat area */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Important for flex children to scroll correctly */
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.chat-input-area {
+  flex-shrink: 0;
+}
